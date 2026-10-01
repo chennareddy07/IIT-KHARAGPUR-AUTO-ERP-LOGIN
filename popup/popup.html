@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ERP Login Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <img class="brand-icon" src="../icons/erp-assistant.svg" alt="">
+        <div class="brand-copy">
+          <p class="eyebrow">STUDENT PRODUCTIVITY</p>
+          <h1>ERP Login Assistant</h1>
+        </div>
+        <button id="closePanel" type="button" class="icon-button" aria-label="Close panel" title="Close panel">×</button>
+      </header>
+
+      <section class="status-card" aria-label="Account status">
+        <div class="status-heading">
+          <span class="status-dot" aria-hidden="true"></span>
+          <h2>Account overview</h2>
+        </div>
+        <p id="accountStatus">Checking ERP settings...</p>
+        <p id="questionStatus">Security questions: checking...</p>
+        <div class="gmail-row">
+          <p id="gmailStatus">Gmail: checking...</p>
+          <button id="disconnectGmail" type="button" class="text-button">Disconnect</button>
+        </div>
+      </section>
+
+      <section class="actions" aria-label="ERP login actions">
+        <button id="autoLogin" type="button" class="button-primary">
+          <span class="button-icon" aria-hidden="true">↗</span>
+          <span>Auto Login<small>Fill details, request OTP, and sign in</small></span>
+        </button>
+        <button id="startLogin" type="button" class="button-secondary">Fill ERP Login</button>
+        <button id="continueLogin" type="button" class="button-secondary">Fetch OTP and sign in</button>
+      </section>
+
+      <section id="progressPanel" class="progress-card" aria-label="Auto Login progress" hidden>
+        <h2>Login progress</h2>
+        <ol id="progressSteps">
+          <li data-step="CHECK_ERP_PAGE">ERP page detected</li>
+          <li data-step="FILL_CREDENTIALS">Credentials and answer filled</li>
+          <li data-step="CLICK_SEND_OTP">OTP requested</li>
+          <li data-step="WAIT_FOR_ERP_CONFIRMATION">ERP confirmed OTP send</li>
+          <li data-step="OTP_EMAIL_POLLING">Waiting for OTP email</li>
+          <li data-step="OTP_RECEIVED">OTP received</li>
+          <li data-step="VERIFY_LOGIN">Verifying sign-in</li>
+        </ol>
+      </section>
+
+      <p id="status" class="feedback" role="status" aria-live="polite">
+        Open the IIT Kharagpur ERP login page, then choose Auto Login.
+      </p>
+
+      <div class="footer-actions">
+        <button id="connectGmail" type="button" class="text-button">Authorize Gmail</button>
+        <button id="openSettings" type="button" class="text-button">Settings</button>
+      </div>
+
+      <details class="diagnostics">
+        <summary>Temporary tab diagnostics</summary>
+        <pre id="tabDiagnostics">Detected active tab URL: not checked
+ERP hostname matches: not checked
+ERP path matches: not checked
+Content script responded: not checked</pre>
+      </details>
+
+      <footer class="credit">
+        <a href="https://github.com/chennareddy07" target="_blank" rel="noopener noreferrer" aria-label="GitHub chennareddy07">
+          <span class="external-link-icon" aria-hidden="true">↗</span>
+          <span>GitHub <strong>chennareddy07</strong></span>
+        </a>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "IIT Kharagpur ERP Login Assistant",
+  "version": "1.0.0",
+  "description": "Fills the IIT Kharagpur ERP login form and retrieves its sign-in OTP from an authorized Gmail account.",
+  "permissions": [
+    "storage",
+    "identity",
+    "tabs",
+    "scripting",
+    "sidePanel",
+    "debugger"
+  ],
+  "host_permissions": [
+    "https://erp.iitkgp.ac.in/IIT_ERP3/*",
+    "https://erp.iitkgp.ac.in/SSOAdministration/*",
+    "https://gmail.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "104150196436-k9k29aeq8aabkg1hvcct8pl3ovpub9sd.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  },
+  "action": {
+    "default_title": "ERP Login Assistant"
+  },
+  "side_panel": {
+    "default_path": "popup/popup.html"
+  },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://erp.iitkgp.ac.in/IIT_ERP3/*",
+        "https://erp.iitkgp.ac.in/SSOAdministration/login.htm"
+      ],
+      "js": [
+        "content/erp-login.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  }
+}

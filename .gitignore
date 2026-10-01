@@ -1,0 +1,29 @@
+# Per-user OAuth/local configuration and Google OAuth downloads
+oauth.local.json
+manifest.local.json
+credentials.json
+token.json
+tokens.json
+client_secret*.json
+
+# Environment variables and local secrets (keep examples shareable)
+.env
+.env.*
+!.env.example
+
+# Private signing keys, local logs, and generated data
+*.pem
+*.key
+*.p12
+*.log
+*.sqlite
+*.db
+
+# Tooling and generated output
+.vscode/
+.idea/
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db

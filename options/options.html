@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings | ERP Login Assistant</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <img class="brand-icon" src="../icons/erp-assistant.svg" alt="">
+        <div>
+          <p class="eyebrow">PERSONAL CONFIGURATION</p>
+          <h1>Settings</h1>
+          <p class="subtitle">Your sign-in details stay in this Chrome profile.</p>
+        </div>
+      </header>
+
+      <p class="security-notice">
+        <strong>Keep your account private.</strong>
+        Settings are stored in Chrome local extension storage and are not encrypted by this extension. Use a trusted device and browser profile.
+      </p>
+
+      <form id="settingsForm" novalidate>
+        <section class="settings-card">
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+              <h2>ERP credentials</h2>
+              <p>Used only to fill the official ERP sign-in form.</p>
+            </div>
+          </div>
+
+          <label for="userId">ERP user ID / stakeholder code</label>
+          <input id="userId" name="userId" autocomplete="username" placeholder="Enter your ERP user ID" required>
+
+          <label for="password">ERP password</label>
+          <div class="input-with-action">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your ERP password" required>
+            <button type="button" class="visibility-toggle" data-toggle-input="password" aria-pressed="false">Show</button>
+          </div>
+        </section>
+
+        <section class="settings-card">
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <h2>Security questions</h2>
+              <p>Enter the exact question wording shown by ERP. Answers are never guessed.</p>
+            </div>
+          </div>
+          <div id="questionRows"></div>
+        </section>
+
+        <section class="settings-card">
+          <div class="section-heading">
+            <span class="section-number">03</span>
+            <div>
+              <h2>Gmail and OTP</h2>
+              <p>Save the mailbox address first, then authorize that Google account.</p>
+            </div>
+          </div>
+
+          <label for="emailAddress">Google mailbox</label>
+          <input id="emailAddress" name="emailAddress" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+          <div class="gmail-status-row">
+            <p id="gmailStatus" role="status" aria-live="polite">Checking Gmail authorization...</p>
+            <button id="authorizeGmail" type="button" class="button button-light">Authorize Gmail</button>
+            <button id="disconnectGmail" type="button" class="button button-outline">Disconnect</button>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button id="saveSettings" type="submit" class="button button-primary">Save settings</button>
+          <button id="clearSettings" type="button" class="button button-danger">Clear credentials</button>
+        </div>
+      </form>
+
+      <p id="status" class="form-feedback" role="status" aria-live="polite"></p>
+
+      <footer class="credit">
+        <a href="https://github.com/chennareddy07" target="_blank" rel="noopener noreferrer" aria-label="GitHub chennareddy07">
+          <span class="external-link-icon" aria-hidden="true">↗</span>
+          <span>GitHub <strong>chennareddy07</strong></span>
+        </a>
+      </footer>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
